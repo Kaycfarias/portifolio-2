@@ -1,11 +1,17 @@
 "use client";
 
-import { navigation } from "@/app/page";
-
 import SectionButton from "./ui/secbutton";
 // import { useState } from "react";
 // import { AnimatePresence, motion } from "motion/react";
 import { AnimatedThemeToggler } from "./toggle-theme";
+
+const navigation = [
+  { name: "Home", href: "#Home" },
+  { name: "About", href: "#About" },
+  { name: "Skills", href: "#Skills" },
+  { name: "Projects", href: "#Projects" },
+  { name: "Contact", href: "#Contact" },
+];
 
 export default function Navbar() {
   // const [isOpen, setIsOpen] = useState(false);

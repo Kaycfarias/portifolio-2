@@ -2,7 +2,13 @@
 
 import { createContext, useState } from "react";
 
-import { navigation } from "../page";
+export const navigation = [
+  { name: "Home", href: "#Home" },
+  { name: "About", href: "#About" },
+  { name: "Skills", href: "#Skills" },
+  { name: "Projects", href: "#Projects" },
+  { name: "Contact", href: "#Contact" },
+];
 
 interface NavContextType {
   activeSection: string;

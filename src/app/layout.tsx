@@ -66,6 +66,7 @@ export default function RootLayout({
           <NavProvider>
             <Navbar />
             {children}
+            
           </NavProvider>
         </ThemeProvider>
       </body>
