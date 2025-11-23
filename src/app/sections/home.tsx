@@ -7,7 +7,7 @@ import { ChevronsDown, FileDown } from "lucide-react";
 export default function HomePage() {
   return (
     <Section id="Home">
-      <div className="flex flex-col w-full h-full items-center justify-center ">
+      <div className="flex flex-col w-full h-full items-center justify-center">
         <TextType
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xlfont-bold text-center"
           text={["hello world!", "Welcome to my website!"]}

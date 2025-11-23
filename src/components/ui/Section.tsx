@@ -1,6 +1,6 @@
 "use client";
 
-import { InView } from "react-intersection-observer";
+import { useOnInView } from "react-intersection-observer";
 import { NavContext } from "@/app/context/NavContext";
 import { useContext } from "react";
 
@@ -11,22 +11,31 @@ interface SectionProps {
 
 export default function Section({ id, children }: Readonly<SectionProps>) {
   const useNav = useContext(NavContext);
+  
+  const trackingRef = useOnInView(
+    (inView, entry) => {
+      if (inView) {
+        useNav.setActiveSection(id);
+        console.log("Element appeared in view", entry);
+      } else {
+        console.log("Element left view", entry);
+      }
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+
   return (
-      <InView
-        as="div"
-        id={id}
-        threshold={0.6}
-        onChange={(inView) => {
-          if (inView) {
-            useNav.setActiveSection(id);
-          }
-        }}
-        className="mx-auto max-w-6xl"
-        style={{
-          height: "calc(100svh - 3.5rem)", // Adjust height to account for the navbar
-        }}
-      >
-        {children}
-      </InView>
+    <div
+      id={id}
+      ref={trackingRef}
+      className="mx-auto max-w-6xl"
+      style={{
+        height: "calc(100dvh - 3.5rem)",
+      }}
+    >
+      {children}
+    </div>
   );
 }

@@ -17,13 +17,13 @@ const StyledButton = styled.button`
   }
 `;
 // Smooth scroll to section with offset
-const scrollTo = (id: string, offset = 80) => {
+const scrollTo = (id: string) => {
   const element = document.getElementById(id);
   if (!element) return;
 
-  const y = element.getBoundingClientRect().top + window.scrollY - offset;
+  const y = element.offsetTop;
 
-  window.scrollTo({ top: y, behavior: "smooth" });
+  window.scrollTo({ top: y, behavior: "instant" });
 };
 
 export default function SectionButton({
@@ -43,8 +43,7 @@ export default function SectionButton({
   return (
     <StyledButton
       as="a"
-      onClickCapture={() => scrollTo(href.replace("#", ""), 56)}
-      // href={href}
+      onClickCapture={() => scrollTo(href.replace("#", ""))}
       style={{
         backgroundSize: activeSection === id ? "100% 3px" : "0 3px",
       }}

@@ -1,3 +1,5 @@
+"use client";
+
 import Footer from "@/components/footer";
 import AboutPage from "./sections/about";
 import ContactPage from "./sections/contact";

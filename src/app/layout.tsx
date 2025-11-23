@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-[100dvh]`}
       >
         <Particles
           particleColors={["#858585", "#797979"]}
@@ -66,7 +66,6 @@ export default function RootLayout({
           <NavProvider>
             <Navbar />
             {children}
-            
           </NavProvider>
         </ThemeProvider>
       </body>

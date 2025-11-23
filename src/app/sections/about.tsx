@@ -17,7 +17,7 @@ export default function AboutPage() {
           loop={false}
         />
         <div className="flex flex-col items-center justify-center w-full h-full">
-          <div className="relative flex items-center justify-center border rounded-full backdrop-blur-xl">
+          <div className="relative flex items-center justify-center border rounded-full backdrop-blur-xl overflow-hidden">
             <div className="absolute flex flex-col items-center justify-center">
               <Image
                 src="/kaycfarias.jpg"
@@ -31,7 +31,7 @@ export default function AboutPage() {
               text="KAYC*FULL STACK*DEVELOPER*"
               onHover="speedUp"
               spinDuration={20}
-              className="absolute z-10"
+              className="absolute z-10 rounded-full"
             />
           </div>
         </div>

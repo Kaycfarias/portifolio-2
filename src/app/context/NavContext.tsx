@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 
 export const navigation = [
   { name: "Home", href: "#Home" },
@@ -23,6 +23,18 @@ export default function NavProvider({
   children: React.ReactNode;
 }>) {
   const [activeSection, setActiveSection] = useState(navigation[0].name);
+  const previousActiveSection = useRef(activeSection);
+
+  useEffect(() => {
+    const elementId = document.getElementById(activeSection);
+    if (elementId && previousActiveSection.current !== activeSection) {
+      window.scrollTo({
+        top: elementId.offsetTop,
+        behavior: "smooth",
+      });
+    }
+    previousActiveSection.current = activeSection;
+  }, [activeSection]);
 
   return (
     <NavContext.Provider value={{ activeSection, setActiveSection }}>
