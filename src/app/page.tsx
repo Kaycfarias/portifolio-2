@@ -9,7 +9,10 @@ import SkillsPage from "./sections/skills";
 
 export default function Home() {
   return (
-    <div className="relative top-14 overflow-y-scroll">
+    <div
+      id="page"
+      className="relative top-14"
+    >
       <HomePage />
       <AboutPage />
       <SkillsPage />

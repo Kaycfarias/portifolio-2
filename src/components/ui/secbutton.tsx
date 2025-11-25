@@ -16,39 +16,35 @@ const StyledButton = styled.button`
     font-weight: 900;
   }
 `;
-// Smooth scroll to section with offset
+
 const scrollTo = (id: string) => {
   const element = document.getElementById(id);
   if (!element) return;
 
   const y = element.offsetTop;
 
-  window.scrollTo({ top: y, behavior: "instant" });
+  window.scrollTo({ top: y, behavior: "smooth" });
 };
 
 export default function SectionButton({
   id,
-  href,
   children,
   className,
-  onClick,
 }: Readonly<{
   id: string;
   href: string;
   children: React.ReactNode;
   className?: string;
-  onClick?: () => void;
 }>) {
   const { activeSection } = useContext(NavContext);
   return (
     <StyledButton
       as="a"
-      onClickCapture={() => scrollTo(href.replace("#", ""))}
       style={{
         backgroundSize: activeSection === id ? "100% 3px" : "0 3px",
       }}
       className={className}
-      onClick={onClick}
+      onClick={() => scrollTo(id)}
     >
       {children}
     </StyledButton>

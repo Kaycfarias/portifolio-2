@@ -14,6 +14,12 @@
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 3.5rem;
+  max-height: 100dvh;
+}
 :root {
   font-family: "Stack Sans Notch", sans-serif;
 }
@@ -133,5 +139,15 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  section,
+  div[id] {
+    will-change: transform;
+    contain: layout style paint;
+  }
+
+  img {
+    content-visibility: auto;
   }
 }
