@@ -1,8 +1,10 @@
 "use client";
 
 import { useOnInView } from "react-intersection-observer";
+
 import { NavContext } from "@/app/context/NavContext";
 import { useContext } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface SectionProps {
@@ -33,7 +35,7 @@ export default function Section({
     <div
       id={id}
       ref={trackingRef}
-      className={`mx-auto max-w-6xl snap-start min-h-[calc(100dvh-3.5rem)] ${cn(
+      className={`mx-auto max-w-6xl min-h-[calc(100dvh-3.5rem)] ${cn(
         className
       )}`}
     >

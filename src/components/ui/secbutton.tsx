@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import { NavContext } from "@/app/context/NavContext";
+
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -17,15 +18,6 @@ const StyledButton = styled.button`
   }
 `;
 
-const scrollTo = (id: string) => {
-  const element = document.getElementById(id);
-  if (!element) return;
-
-  const y = element.offsetTop;
-
-  window.scrollTo({ top: y, behavior: "smooth" });
-};
-
 export default function SectionButton({
   id,
   children,
@@ -37,6 +29,16 @@ export default function SectionButton({
   className?: string;
 }>) {
   const { activeSection } = useContext(NavContext);
+
+  const scrollTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const y = element.offsetTop;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
   return (
     <StyledButton
       as="a"

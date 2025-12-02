@@ -37,25 +37,41 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="max-w-2xl text-center space-y-4">
-          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-            Full Stack Developer apaixonado por criar experiências web modernas
-            e performáticas. Especializado em React, Next.js, e tecnologias
-            JavaScript/TypeScript.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
-              React & Next.js
-            </span>
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
-              TypeScript
-            </span>
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
-              TailwindCSS
-            </span>
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
-              Node.js
-            </span>
+        <div className="max-w-3xl text-center space-y-8 px-4">
+          <div className="space-y-4">
+            <div className="inline-block bg-card border rounded-lg p-4 text-left font-mono text-sm text-muted-foreground">
+              <span className="text-pink-500">class</span>{" "}
+              <span className="text-orange-400">KaycFarias</span> {"{"}
+              <div className="pl-4">
+                <div>
+                  <span className="text-muted-foreground">name</span>:{" "}
+                  <span className="text-blue-400">string</span> ={" "}
+                  <span className="text-green-500">'Kayc Farias'</span>;
+                </div>
+                <div>
+                  <span className="text-muted-foreground">city</span>:{" "}
+                  <span className="text-blue-400">string</span> ={" "}
+                  <span className="text-green-500">'Sumaré-SP'</span>;
+                </div>
+                <div>
+                  <span className="text-muted-foreground">currentRole</span>:{" "}
+                  <span className="text-blue-400">string</span> ={" "}
+                  <span className="text-green-500">
+                    'Software Engineering Student'
+                  </span>
+                  ;
+                </div>
+              </div>
+              <div>{"}"}</div>
+            </div>
+
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed py-5">
+              I'm a 21-year-old Software Engineering student since early 2024.
+              My passion for technology and programming started early, at age
+              12, when I took a robotics course. Since then, I've been dedicated
+              to learning and improving my skills in the field, exploring
+              various aspects of software development.
+            </p>
           </div>
         </div>
       </div>
