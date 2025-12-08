@@ -59,7 +59,6 @@ export default function RootLayout({
           particleHoverFactor={1}
           cameraDistance={50}
         />
-
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

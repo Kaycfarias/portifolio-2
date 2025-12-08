@@ -1,10 +1,9 @@
 "use client";
 
-import { useOnInView } from "react-intersection-observer";
-
-import { NavContext } from "@/app/context/NavContext";
+import { useInView } from "react-intersection-observer";
 import { useContext } from "react";
 
+import { NavContext } from "@/app/context/NavContext";
 import { cn } from "@/lib/utils";
 
 interface SectionProps {
@@ -18,28 +17,29 @@ export default function Section({
   children,
   className,
 }: Readonly<SectionProps>) {
-  const useNav = useContext(NavContext);
+  const { setActiveSection } = useContext(NavContext);
 
-  const trackingRef = useOnInView(
-    (inView, entry) => {
+  const { ref } = useInView({
+    threshold: 0.5,
+    onChange: (inView) => {
       if (inView) {
-        useNav.setActiveSection(id);
+        setActiveSection(id);
       }
     },
-    {
-      threshold: 0.1,
-    }
-  );
+  });
 
   return (
-    <div
+    <section
       id={id}
-      ref={trackingRef}
-      className={`mx-auto max-w-6xl min-h-[calc(100dvh-3.5rem)] ${cn(
+      ref={ref}
+      className={cn(
+        "mx-auto max-w-6xl min-h-[calc(100dvh-3.5rem)]",
+        "px-4 sm:px-6 lg:px-8",
+        "flex flex-col",
         className
-      )}`}
+      )}
     >
       {children}
-    </div>
+    </section>
   );
 }
