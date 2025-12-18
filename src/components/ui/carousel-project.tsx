@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./card";
+import { Card, CardContent, CardFooter, CardTitle } from "./card";
 import { Button } from "./button";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
