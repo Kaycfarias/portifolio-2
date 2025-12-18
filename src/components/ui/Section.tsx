@@ -33,13 +33,14 @@ export default function Section({
       id={id}
       ref={ref}
       className={cn(
-        "mx-auto max-w-6xl min-h-[calc(100dvh-3.5rem)]",
+        "mx-auto max-w-6xl min-h-[calc(100dvh-3.5rem)] ",
         "px-4 sm:px-6 lg:px-8",
-        "flex flex-col",
+        "flex flex-col h-full w-full items-center justify-center gap-10",
         className
       )}
     >
       {children}
+      <div className="h-14"/>
     </section>
   );
 }

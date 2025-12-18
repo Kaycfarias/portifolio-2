@@ -100,37 +100,35 @@ const skills = [
 export default function SkillsPage() {
   return (
     <Section id="Skills">
-      <div className="flex flex-col h-full w-full items-center justify-center gap-10">
-        <TextType
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center"
-          text={["Skills"]}
-          typingSpeed={75}
-          pauseDuration={1500}
-          showCursor={true}
-          cursorCharacter="|"
-          loop={false}
-        />
-        <div className="w-full max-w-5xl">
-          <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 sm:gap-6">
-            {skills.map((skill, index) => (
-              <li key={index}>
-                <Link
-                  href={skill.page}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col items-center justify-center gap-3 border border-border/50 rounded-xl backdrop-blur-md bg-card/30 p-4 sm:p-6 hover:scale-105 hover:border-primary/50 hover:bg-card/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
-                >
-                  <div className="transition-transform duration-300 group-hover:scale-110">
-                    {skill.icon}
-                  </div>
-                  <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                    {skill.name}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <TextType
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center"
+        text={["Skills"]}
+        typingSpeed={75}
+        pauseDuration={1500}
+        showCursor={true}
+        cursorCharacter="|"
+        loop={false}
+      />
+      <div className="w-full max-w-5xl">
+        <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 sm:gap-6">
+          {skills.map((skill, index) => (
+            <li key={index}>
+              <Link
+                href={skill.page}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center justify-center gap-3 border border-border/50 rounded-xl backdrop-blur-md bg-card/30 p-4 sm:p-6 hover:scale-105 hover:border-primary/50 hover:bg-card/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+              >
+                <div className="transition-transform duration-300 group-hover:scale-110">
+                  {skill.icon}
+                </div>
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                  {skill.name}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </Section>
   );

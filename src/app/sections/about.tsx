@@ -6,7 +6,6 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <Section id="About">
-      <div className="flex flex-col w-full h-full items-center justify-center gap-8 px-4">
         <TextType
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center"
           text={["About Me"]}
@@ -74,7 +73,6 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-      </div>
     </Section>
   );
 }

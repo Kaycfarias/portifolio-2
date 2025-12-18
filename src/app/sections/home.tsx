@@ -34,7 +34,7 @@ export default function HomePage() {
       </div>
       <ChevronsDown
         size={64}
-        className="mx-auto animate-bounce relative bottom-25"
+        className="mx-auto animate-bounce absolute bottom-14"
       />
     </Section>
   );
