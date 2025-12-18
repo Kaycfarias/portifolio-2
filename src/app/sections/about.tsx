@@ -11,7 +11,8 @@ export default function AboutPage() {
           text={["About Me"]}
           typingSpeed={75}
           pauseDuration={1500}
-          showCursor={true}
+          showCursor
+          startOnVisible
           cursorCharacter="|"
           loop={false}
         />

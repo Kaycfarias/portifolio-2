@@ -1,7 +1,6 @@
 import TextType from "@/components/TextType";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { Card, CardContent } from "@/components/ui/card";
 
 import {
   Carousel,
@@ -11,15 +10,57 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import CarouselProject from "@/components/ui/carousel-project";
 
 import Section from "@/components/ui/Section";
-import { Dot, IndentIcon } from "lucide-react";
 import React from "react";
 
 const projects = [
-  { name: "Project 1", description: "Description of Project 1" },
-  { name: "Project 2", description: "Description of Project 2" },
-  { name: "Project 3", description: "Description of Project 3" },
+  {
+    name: "BeWear E-commerce",
+    description:
+      "A modern and fully-featured e-commerce platform for fashion products, built using the latest web technologies.",
+    image_path: "/bewear-store.png",
+    tecnologies: [
+      "Nextjs",
+      "Typescript",
+      "Tailwindcss",
+      "Nodejs",
+      "Expressjs",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Betther auth",
+      "Vercel",
+    ],
+    link: "https://store.kaycfarias.dev/",
+    repo_url: "https://github.com/Kaycfarias/ecommerce-bewear",
+  },
+  {
+    name: "Portifolio website",
+    description:
+      "My personal portfolio website to showcase my projects and skills.",
+    image_path: "/portifolio-site.png",
+    tecnologies: [
+      "Nextjs",
+      "Typescript",
+      "Tailwindcss",
+      "Vercel",
+      "Shadcn UI",
+      "Styled Components",
+      "Framer Motion",
+      "React",
+    ],
+    link: "https://kaycfarias.dev/",
+    repo_url: "https://github.com/Kaycfarias/portifolio-2",
+  },
+  {
+    name: "Project 3",
+    description: "Description of Project 3",
+    image_path: "",
+    tecnologies: [],
+    link: "",
+    repo_url: "",
+  },
 ];
 
 export default function ProjectsPage() {
@@ -48,23 +89,17 @@ export default function ProjectsPage() {
           text={["Projects"]}
           typingSpeed={75}
           pauseDuration={1500}
-          showCursor={true}
+          showCursor
+          startOnVisible
           cursorCharacter="|"
           loop={false}
         />
-        <div className="w-full max-w-xl">
-          <Carousel
-            setApi={setApi}
-            className="w-full h-full space-y-1"
-          >
+        <div className="w-full max-w-2xl">
+          <Carousel setApi={setApi} className="w-full h-full space-y-4">
             <CarouselContent className="rounded-xl">
               {projects.map((project, index) => (
-                <CarouselItem key={index} className="aspect-square">
-                  <Card className="w-full h-full flex items-center justify-center">
-                    <span className="text-2xl font-semibold">
-                      {project.name}: {project.description}
-                    </span>
-                  </Card>
+                <CarouselItem key={index} className="">
+                  <CarouselProject project={project} />
                 </CarouselItem>
               ))}
             </CarouselContent>

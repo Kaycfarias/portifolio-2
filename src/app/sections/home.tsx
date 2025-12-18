@@ -13,7 +13,8 @@ export default function HomePage() {
           text={["hello world!", "Welcome to my website!"]}
           typingSpeed={75}
           pauseDuration={1500}
-          showCursor={true}
+          showCursor
+          startOnVisible
           cursorCharacter="|"
           loop={false}
         />

@@ -105,7 +105,8 @@ export default function SkillsPage() {
         text={["Skills"]}
         typingSpeed={75}
         pauseDuration={1500}
-        showCursor={true}
+        showCursor
+        startOnVisible
         cursorCharacter="|"
         loop={false}
       />
