@@ -9,12 +9,12 @@ const inputClass =
   "w-full px-4 py-2 rounded-lg border border-border/50 bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
 
 const socialLinks = [
-  { href: "https://github.com/Kaycfarias", icon: Github },
+  { href: "https://github.com/Kaycfarias", icon: <Github },
   { href: "https://linkedin.com/in/kaycfarias", icon: Linkedin },
 ];
 
 const contactInfo = [
-  { icon: Mail, text: "contact@kaycfarias.dev" },
+  { icon: Mail, text: "kaycg123@gmail.com" },
   { icon: MapPin, text: "Brazil" },
 ];
 
