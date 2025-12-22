@@ -1,3 +1,4 @@
+import { LogoGithub } from "@/components/icons";
 import TextType from "@/components/TextType";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
@@ -13,6 +14,7 @@ import {
 import CarouselProject from "@/components/ui/carousel-project";
 
 import Section from "@/components/ui/Section";
+import Link from "next/link";
 import React from "react";
 
 const projects = [
@@ -53,14 +55,6 @@ const projects = [
     link: "https://kaycfarias.dev/",
     repo_url: "https://github.com/Kaycfarias/portifolio-2",
   },
-  {
-    name: "Project 3",
-    description: "Description of Project 3",
-    image_path: "",
-    tecnologies: [],
-    link: "",
-    repo_url: "",
-  },
 ];
 
 export default function ProjectsPage() {
@@ -98,10 +92,25 @@ export default function ProjectsPage() {
           <Carousel setApi={setApi} className="w-full h-full space-y-4">
             <CarouselContent className="rounded-xl">
               {projects.map((project, index) => (
-                <CarouselItem key={index} className="">
+                <CarouselItem key={index} className="pb-1">
                   <CarouselProject project={project} />
                 </CarouselItem>
               ))}
+              <CarouselItem className="pb-1">
+                <div className="flex flex-col items-center justify-center w-full h-full border rounded-2xl">
+                  <span>Mais projetos sendo desenvolvidos!.</span>
+                  <Button asChild variant={"outline"}>
+                    <Link
+                      href="https://github.com/Kaycfarias/?tab=repositories"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <LogoGithub />
+                      View on GitHub
+                    </Link>
+                  </Button>
+                </div>
+              </CarouselItem>
             </CarouselContent>
             <div className="flex justify-between items-center text-muted-foreground text-center text-sm space-x-1">
               <ButtonGroup>
