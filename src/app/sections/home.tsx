@@ -3,6 +3,7 @@ import TextType from "@/components/TextType";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/ui/Section";
 import { ChevronsDown, FileDown } from "lucide-react";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -10,7 +11,7 @@ export default function HomePage() {
       <div className="flex flex-col h-full w-full items-center justify-center">
         <TextType
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xlfont-bold text-center"
-          text={["hello world!", "Welcome to my website!"]}
+          text={["hello world!", "Turning ideas into code.", "Welcome to my portfolio."]}
           typingSpeed={75}
           pauseDuration={1500}
           showCursor
@@ -28,9 +29,11 @@ export default function HomePage() {
         <code className="text-md sm:text-lg md:text-2xl lg:text-3xl">
           {"</Full Stack Developer>"}
         </code>
-        <Button variant={"outline"} className="mt-4">
-          {" "}
-          <FileDown /> Download my CV
+        <Button asChild variant={"outline"} className="mt-4">
+          <Link href="/Kayc_Farias_Curriculo.pdf" download={true}>
+            {" "}
+            <FileDown /> Download my CV
+          </Link>
         </Button>
       </div>
       <ChevronsDown
