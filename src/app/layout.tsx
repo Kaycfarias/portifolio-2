@@ -10,6 +10,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import Particles from "@/components/Particles";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -73,6 +75,7 @@ export default function RootLayout({
           </NavProvider>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
     </html>
   );
 }
