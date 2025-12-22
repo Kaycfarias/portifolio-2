@@ -43,9 +43,9 @@ ${message}
 Enviado via kaycfarias.dev
     `.trim();
 
-    const mailtoLink = `mailto:contact@kaycfarias.dev?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:${
+      contactInfo[0].text
+    }?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailtoLink;
   };
