@@ -11,7 +11,11 @@ export default function HomePage() {
       <div className="flex flex-col h-full w-full items-center justify-center">
         <TextType
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xlfont-bold text-center"
-          text={["hello world!", "Turning ideas into code.", "Welcome to my portfolio."]}
+          text={[
+            "hello world!",
+            "Turning ideas into code.",
+            "Welcome to my portfolio.",
+          ]}
           typingSpeed={75}
           pauseDuration={1500}
           showCursor
@@ -37,6 +41,12 @@ export default function HomePage() {
         </Button>
       </div>
       <ChevronsDown
+        onClick={() =>
+          window.scrollTo({
+            top: document.getElementById("About")?.offsetTop,
+            behavior: "smooth",
+          })
+        }
         size={64}
         className="mx-auto animate-bounce absolute bottom-14"
       />

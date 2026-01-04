@@ -21,7 +21,7 @@ export default function Section({
   const { setActiveSection } = useContext(NavContext);
 
   const { ref } = useInView({
-    threshold: 0.5,
+    threshold: 0.6,
     onChange: (inView) => {
       if (inView) {
         setActiveSection(id);
