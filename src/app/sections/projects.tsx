@@ -33,9 +33,27 @@ const projects = [
       "Drizzle ORM",
       "Betther auth",
       "Vercel",
+      "Git",
     ],
     link: "https://store.kaycfarias.dev/",
     repo_url: "https://github.com/Kaycfarias/ecommerce-bewear",
+  }
+  ,
+  {
+    name: "Http Client",
+    description:
+      "A powerful HTTP client for making API requests with ease and flexibility.",
+    image_path: "/http-client.png",
+    tecnologies: [
+      "Rust",
+      "Iced GUI",
+      "Reqwest",
+      "Tokio",
+      "Cargo",
+      "Git"
+    ],
+    link: "https://kaycfarias.dev/",
+    repo_url: "https://github.com/Kaycfarias/portifolio-2",
   },
   {
     name: "Portifolio website",
@@ -51,10 +69,11 @@ const projects = [
       "Styled Components",
       "Framer Motion",
       "React",
+      "Git",
     ],
-    link: "https://kaycfarias.dev/",
-    repo_url: "https://github.com/Kaycfarias/portifolio-2",
-  },
+    link: "https://github.com/Kaycfarias/http-client",
+    repo_url: "https://github.com/Kaycfarias/http-client",
+  }
 ];
 
 export default function ProjectsPage() {
