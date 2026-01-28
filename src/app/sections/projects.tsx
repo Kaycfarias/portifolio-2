@@ -42,7 +42,7 @@ const projects = [
   {
     name: "Http Client",
     description:
-      "A powerful HTTP client for making API requests with ease and flexibility.",
+      "A powerful HTTP client for making API requests writed in Rust to maximize performance and reliability.",
     image_path: "/http-client.png",
     tecnologies: [
       "Rust",
@@ -52,13 +52,13 @@ const projects = [
       "Cargo",
       "Git"
     ],
-    link: "https://kaycfarias.dev/",
-    repo_url: "https://github.com/Kaycfarias/portifolio-2",
+    link: "https://github.com/Kaycfarias/http-client",
+    repo_url: "https://github.com/Kaycfarias/http-client",
   },
   {
     name: "Portifolio website",
     description:
-      "My personal portfolio website to showcase my projects and skills.",
+    "My personal portfolio website to showcase my projects and skills.",
     image_path: "/portifolio-site.png",
     tecnologies: [
       "Nextjs",
@@ -71,8 +71,8 @@ const projects = [
       "React",
       "Git",
     ],
-    link: "https://github.com/Kaycfarias/http-client",
-    repo_url: "https://github.com/Kaycfarias/http-client",
+    link: "https://kaycfarias.dev/",
+    repo_url: "https://github.com/Kaycfarias/portifolio-2",
   }
 ];
 
