@@ -10,7 +10,7 @@ const inputClass =
 
 const socialLinks = [
   { href: "https://github.com/Kaycfarias", icon: Github },
-  { href: "https://linkedin.com/in/kaycfarias", icon: Linkedin },
+  { href: "https://linkedin.com/in/kayc-farias-b32840283/", icon: Linkedin },
 ];
 
 const contactInfo = [
