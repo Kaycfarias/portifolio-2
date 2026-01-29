@@ -9,10 +9,7 @@ import SkillsPage from "./sections/skills";
 
 export default function Home() {
   return (
-    <div
-      id="page"
-      className="relative top-14"
-    >
+    <div id="page" className="relative top-14">
       <HomePage />
       <AboutPage />
       <SkillsPage />

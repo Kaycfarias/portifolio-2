@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import SectionButton from "./ui/secbutton";
-import { AnimatedThemeToggler } from "./toggle-theme";
 import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
+import { AnimatedThemeToggler } from "./toggle-theme";
+import SectionButton from "./ui/secbutton";
 
 const NAV_HEIGHT = 56; // h-14 Height of the navbar in pixels
 
@@ -46,18 +46,14 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`
-        fixed w-full z-50 
-        flex flex-col justify-center items-center
-        border-b
-        ${isMobileMenuOpen ? "backdrop-blur-md" : "backdrop-blur-sm"}`}
+      className={`fixed z-50 flex w-full flex-col items-center justify-center border-b ${isMobileMenuOpen ? "backdrop-blur-md" : "backdrop-blur-sm"}`}
     >
-      <div className="flex h-14 items-center justify-between px-4 w-full max-w-6xl">
+      <div className="flex h-14 w-full max-w-6xl items-center justify-between px-4">
         <h1 className="scroll-m-20 text-center text-3xl font-extrabold tracking-tight text-balance">
           @kayc
         </h1>
         <div className="flex items-center space-x-2">
-          <div className="hidden sm:block space-x-4">
+          <div className="hidden space-x-4 sm:block">
             {navigation.map((item) => (
               <SectionButton
                 key={item.name}
@@ -68,7 +64,7 @@ export default function Navbar() {
           </div>
           <AnimatedThemeToggler />
           <button
-            className="sm:hidden text-2xl p-1"
+            className="p-1 text-2xl sm:hidden"
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -85,7 +81,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="sm:hidden w-full overflow-hidden"
+            className="w-full overflow-hidden sm:hidden"
           >
             {navigation.map((item) => (
               <div
@@ -95,7 +91,7 @@ export default function Navbar() {
               >
                 <SectionButton
                   name={item.name}
-                  className="block w-full text-left p-1"
+                  className="block w-full p-1 text-left"
                 />
               </div>
             ))}

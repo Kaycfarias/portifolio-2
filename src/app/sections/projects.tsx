@@ -117,7 +117,7 @@ export default function ProjectsPage() {
               ))}
               <CarouselItem className="pb-1">
                 <div className="flex flex-col items-center justify-center w-full h-full border rounded-2xl">
-                  <span>Mais projetos sendo desenvolvidos!.</span>
+                  <span>More projects coming soon!</span>
                   <Button asChild variant={"outline"}>
                     <Link
                       href="https://github.com/Kaycfarias/?tab=repositories"

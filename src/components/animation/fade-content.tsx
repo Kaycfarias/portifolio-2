@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface FadeContentProps {
   children: ReactNode;
@@ -37,7 +37,7 @@ const FadeContent: React.FC<FadeContentProps> = ({
           }, delay);
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(element);
