@@ -20,38 +20,27 @@ const StyledButton = styled.button`
 `;
 
 export default function SectionButton({
-  id,
   name,
   className,
-}: Readonly<{
-  id: string;
+  ...props
+}: React.ComponentProps<"button"> & Readonly<{
   name: string;
   className?: string;
 }>) {
   const { activeSection } = useContext(NavContext);
 
-  const scrollTo = (id: string) => {
-      const element = document.getElementById(id);
-      if (!element) return;
-
-      const y = element.offsetTop;
-
-      window.scrollTo({ top: y, behavior: "smooth" });
-  };
-
   return (
     <StyledButton
-      as="a"
       style={{
-        backgroundSize: activeSection === id ? "100% 3px" : "0 3px",
+        backgroundSize: activeSection === name ? "100% 3px" : "0 3px",
       }}
       className={cn(className)}
-      onClick={() => scrollTo(id)}
+      {...props}
     >
       <span
         style={{
           transform:
-            activeSection === id
+            activeSection === name
               ? "translateY(-3px) scale(1.10)"
               : "translateY(0) scale(1)",
           transition: "transform 0.25s ease-out",
