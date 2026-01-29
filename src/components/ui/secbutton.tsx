@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { NavContext } from "@/app/context/NavContext";
 
 import styled from "styled-components";
+import { cn } from "@/lib/utils";
 
 const StyledButton = styled.button`
   & {
@@ -11,7 +12,7 @@ const StyledButton = styled.button`
     background-repeat: no-repeat;
     background-size: 0 3px;
     background-position: left bottom;
-    transition: background-size 0.2s ease-in-out;
+    transition: background-size 0.3s ease-in-out;
     cursor: pointer;
     text-decoration: none;
     font-weight: 900;
@@ -20,23 +21,22 @@ const StyledButton = styled.button`
 
 export default function SectionButton({
   id,
-  children,
+  name,
   className,
 }: Readonly<{
   id: string;
-  href: string;
-  children: React.ReactNode;
+  name: string;
   className?: string;
 }>) {
   const { activeSection } = useContext(NavContext);
 
   const scrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    if (!element) return;
+      const element = document.getElementById(id);
+      if (!element) return;
 
-    const y = element.offsetTop;
+      const y = element.offsetTop;
 
-    window.scrollTo({ top: y, behavior: "smooth" });
+      window.scrollTo({ top: y, behavior: "smooth" });
   };
 
   return (
@@ -45,10 +45,21 @@ export default function SectionButton({
       style={{
         backgroundSize: activeSection === id ? "100% 3px" : "0 3px",
       }}
-      className={className}
+      className={cn(className)}
       onClick={() => scrollTo(id)}
     >
-      {children}
+      <span
+        style={{
+          transform:
+            activeSection === id
+              ? "translateY(-3px) scale(1.10)"
+              : "translateY(0) scale(1)",
+          transition: "transform 0.25s ease-out",
+          display: "inline-block",
+        }}
+      >
+        {name}
+      </span>
     </StyledButton>
   );
 }

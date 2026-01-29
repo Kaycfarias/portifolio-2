@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import SectionButton from "./ui/secbutton";
 import { AnimatedThemeToggler } from "./toggle-theme";
 import { Menu, X } from "lucide-react";
@@ -18,7 +19,13 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed backdrop-blur-[2px] border-b w-full flex flex-col justify-center items-center z-50">
+      <nav
+        className={`
+          fixed w-full z-50 
+          flex flex-col justify-center items-center
+          border-b
+          ${isOpen ? "backdrop-blur-md" : "backdrop-blur-sm"}`}
+      >
         <div className="flex h-14 items-center justify-between px-4 w-full max-w-6xl">
           <h1 className="scroll-m-20 text-center text-3xl font-extrabold tracking-tight text-balance">
             @kayc
@@ -26,9 +33,11 @@ export default function Navbar() {
           <div className="flex items-center space-x-2">
             <div className="hidden sm:block space-x-4">
               {navigation.map((item) => (
-                <SectionButton key={item.name} id={item.name} href={item.href}>
-                  {item.name}
-                </SectionButton>
+                <SectionButton
+                  key={item.name}
+                  id={item.name}
+                  name={item.name}
+                />
               ))}
             </div>
             <AnimatedThemeToggler />
@@ -41,20 +50,32 @@ export default function Navbar() {
           </div>
         </div>
 
-        {isOpen && (
-          <div className="sm:hidden w-full border-t">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block px-4 py-3 hover:bg-accent"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-        )}
+        {/* Mobile Menu */}
+        {/* <AnimatePresence> */}
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="sm:hidden w-full overflow-hidden"
+            >
+              {navigation.map((item) => (
+                <div
+                  className="p-3"
+                  key={item.name}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <SectionButton
+                    id={item.name}
+                    name={item.name}
+                    className="block w-full text-left p-1"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          )}
+        {/* </AnimatePresence> */}
       </nav>
     </>
   );
