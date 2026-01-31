@@ -6,8 +6,6 @@ import { useState } from "react";
 import { AnimatedThemeToggler } from "./toggle-theme";
 import SectionButton from "./ui/secbutton";
 
-const NAV_HEIGHT = 56; // h-14 Height of the navbar in pixels
-
 const navigation = [
   { name: "Home", href: "#Home" },
   { name: "About", href: "#About" },
@@ -26,7 +24,7 @@ export default function Navbar() {
     const element = document.getElementById(sectionId);
     if (!element) return;
 
-    const yPosition = element.offsetTop - NAV_HEIGHT;
+    const yPosition = element.offsetTop;
     window.scrollTo({ top: yPosition, behavior: "smooth" });
   };
 

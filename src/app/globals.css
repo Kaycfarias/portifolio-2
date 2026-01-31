@@ -17,7 +17,7 @@
 html,
 body {
   /* scroll-snap-type: y mandatory; */
-  scroll-padding-top: 3.5rem;
+  /* scroll-padding-top: 3.5rem; */
   max-height: 100dvh;
 }
 :root {
