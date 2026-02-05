@@ -1,10 +1,12 @@
 "use client";
 
-import { useContext } from "react";
 import { NavContext } from "@/app/context/NavContext";
+import { cn } from "@/lib/utils";
+
+import { useTranslations } from "next-intl";
+import { useContext } from "react";
 
 import styled from "styled-components";
-import { cn } from "@/lib/utils";
 
 const StyledButton = styled.button`
   & {
@@ -23,11 +25,13 @@ export default function SectionButton({
   name,
   className,
   ...props
-}: React.ComponentProps<"button"> & Readonly<{
-  name: string;
-  className?: string;
-}>) {
+}: React.ComponentProps<"button"> &
+  Readonly<{
+    name: string;
+    className?: string;
+  }>) {
   const { activeSection } = useContext(NavContext);
+  const t = useTranslations("Navbar");
 
   return (
     <StyledButton
@@ -47,7 +51,7 @@ export default function SectionButton({
           display: "inline-block",
         }}
       >
-        {name}
+        {t(name)}
       </span>
     </StyledButton>
   );

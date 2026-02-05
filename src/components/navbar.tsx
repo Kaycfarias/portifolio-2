@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { AnimatedThemeToggler } from "./toggle-theme";
 import SectionButton from "./ui/secbutton";
+import LocaleSwitcher from "./locale-switcher";
 
 const navigation = [
   { name: "Home", href: "#Home" },
@@ -47,9 +48,12 @@ export default function Navbar() {
       className={`fixed z-50 flex w-full flex-col items-center justify-center border-b ${isMobileMenuOpen ? "backdrop-blur-md" : "backdrop-blur-sm"}`}
     >
       <div className="flex h-14 w-full max-w-6xl items-center justify-between px-4">
-        <h1 className="scroll-m-20 text-center text-3xl font-extrabold tracking-tight text-balance">
-          @kayc
-        </h1>
+        <div className="flex flex-row items-center space-x-4">
+          <h1 className="scroll-m-20 text-center text-3xl font-extrabold tracking-tight text-balance">
+            @kayc
+          </h1>
+          <LocaleSwitcher />
+        </div>
         <div className="flex items-center space-x-2">
           <div className="hidden space-x-4 sm:block">
             {navigation.map((item) => (

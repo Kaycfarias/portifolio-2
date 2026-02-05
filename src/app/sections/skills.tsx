@@ -1,5 +1,3 @@
-import TextType from "@/components/TextType";
-import Section from "@/components/ui/Section";
 import {
   LogoCss3,
   LogoExpress,
@@ -17,7 +15,12 @@ import {
   LogoTailwind,
   Typescript,
 } from "@/components/icons";
+
+import TextType from "@/components/text-type";
+import Section from "@/components/ui/section";
 import Link from "next/link";
+
+import { useTranslations } from "use-intl/react";
 
 const skills = [
   {
@@ -98,11 +101,12 @@ const skills = [
 ];
 
 export default function SkillsPage() {
+  const t = useTranslations("SkillsSection");
   return (
     <Section id="Skills">
       <TextType
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center"
-        text={["Skills"]}
+        className="text-center text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl"
+        text={[t("title")]}
         typingSpeed={75}
         pauseDuration={1500}
         showCursor
@@ -111,19 +115,19 @@ export default function SkillsPage() {
         loop={false}
       />
       <div className="w-full max-w-5xl">
-        <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 sm:gap-6">
+        <ul className="grid grid-cols-3 gap-4 sm:grid-cols-4 sm:gap-6 md:grid-cols-5">
           {skills.map((skill, index) => (
             <li key={index}>
               <Link
                 href={skill.page}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center justify-center gap-3 border border-border/50 rounded-xl backdrop-blur-md bg-card/30 p-4 sm:p-6 hover:scale-105 hover:border-primary/50 hover:bg-card/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+                className="group border-border/50 bg-card/30 hover:border-primary/50 hover:bg-card/50 hover:shadow-primary/10 flex flex-col items-center justify-center gap-3 rounded-xl border p-4 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-lg sm:p-6"
               >
                 <div className="transition-transform duration-300 group-hover:scale-110">
                   {skill.icon}
                 </div>
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                <span className="text-muted-foreground group-hover:text-foreground text-xs font-medium transition-colors duration-300 sm:text-sm">
                   {skill.name}
                 </span>
               </Link>

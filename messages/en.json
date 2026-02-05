@@ -1,0 +1,55 @@
+{
+  "Navbar": {
+    "Home": "Home",
+    "About": "About",
+    "Skills": "Skills",
+    "Projects": "Projects",
+    "Contact": "Contact"
+  },
+  "HomeSection": {
+    "title": "Hi, I'm Kayc Farias",
+    "subtitle": "Full-Stack Developer",
+    "enuciete1": "hello world!",
+    "enuciete2": "Turning ideas into code.",
+    "enuciete3": "Welcome to my portfolio.",
+    "download": "Download my CV"
+  },
+  "AboutSection": {
+    "title": "About Me",
+    "description": "I'm a 21-year-old Software Engineering student since early 2024. My passion for technology and programming started early, at age 12, when I took a robotics course. Since then, I've been dedicated to learning and improving my skills in the field, exploring various aspects of software development."
+  },
+  "SkillsSection": {
+    "title": "My Skills"
+  },
+  "ProjectsSection": {
+    "title": "My Projects",
+    "bewear-ecommerce": {
+      "description": "A modern, fully featured e-commerce platform for fashion products, built with the latest web technologies."
+    },
+    "http-client": {
+      "description": "A powerful HTTP client for making API requests, written in Rust to maximize performance and reliability."
+    },
+    "portfolio-website": {
+      "description": "My personal portfolio website showcasing my projects, skills, and experience."
+    },
+    "carousel-end": {
+      "enunciate": "More projects coming soon!",
+      "button": "View on GitHub"
+    }
+  },
+  "ContactSection": {
+    "title": "Contact Me",
+    "subtitle": "Let's work together!",
+    "Card": {
+      "title": "Get in Touch",
+      "description": "Feel free to reach out for collaborations, opportunities, or just a friendly hello!"
+    },
+    "Form": {
+      "name": { "label": "Name", "placeholder": "Enter your name" },
+      "email": { "label": "Email", "placeholder": "your@email.com" },
+      "subject": { "label": "Subject", "placeholder": "What is this about?" },
+      "message": { "label": "Message", "placeholder": "Enter message..." },
+      "button": "Send Message"
+    }
+  }
+}
