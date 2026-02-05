@@ -1,15 +1,15 @@
+import "@/app/globals.css";
+import Navbar from "@/components/navbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
-import Navbar from "@/components/navbar";
-
-import NavProvider from "./context/NavContext";
+import NavProvider from "@/app/context/NavContext";
 import { ThemeProvider } from "@/components/theme-provider";
 
-import Particles from "@/components/Particles";
-
+import Particles from "@/components/particles-background";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,13 +38,20 @@ export const metadata: Metadata = {
   description: "Kayc Farias Portfolio site",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function RootLayout({
+  children,
+  params,
+}: Readonly<RootLayoutProps>) {
+  const { locale } = await params;
+  const messages = await getMessages({ locale });
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -67,12 +74,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NavProvider>
-            <Navbar />
-            {children}
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              <Navbar />
+              {children}
+            </NextIntlClientProvider>
           </NavProvider>
         </ThemeProvider>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
       </body>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
     </html>
   );
 }

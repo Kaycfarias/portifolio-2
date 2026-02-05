@@ -1,7 +1,7 @@
 "use client";
 
-import { useInView } from "react-intersection-observer";
 import { useContext } from "react";
+import { useInView } from "react-intersection-observer";
 
 import { NavContext } from "@/app/context/NavContext";
 import { cn } from "@/lib/utils";
@@ -30,19 +30,15 @@ export default function Section({
   });
 
   return (
-    <FadeContent
-      duration={750}
-      easing="ease-out"
-      initialOpacity={0}
-    >
+    <FadeContent duration={1000} easing="ease-out" initialOpacity={0}>
       <section
         id={id}
         ref={ref}
         className={cn(
-          "mx-auto max-w-6xl min-h-[calc(100dvh-3.5rem)] ",
+          "mx-auto min-h-[calc(100dvh-3.5rem)] max-w-6xl",
           "px-4 sm:px-6 lg:px-8",
-          "flex flex-col h-full w-full items-center justify-center gap-10",
-          className
+          "flex h-full w-full flex-col items-center justify-center gap-10",
+          className,
         )}
       >
         {children}

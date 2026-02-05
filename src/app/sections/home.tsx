@@ -1,21 +1,19 @@
-import GradientText from "@/components/GradientText";
-import TextType from "@/components/TextType";
+import GradientText from "@/components/gradient-text";
+import TextType from "@/components/text-type";
 import { Button } from "@/components/ui/button";
-import Section from "@/components/ui/Section";
+import Section from "@/components/ui/section";
 import { ChevronsDown, FileDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function HomePage() {
+  const t = useTranslations("HomeSection");
   return (
-    <Section className="w-full h-[calc(100dvh-3.5rem)]" id="Home">
-      <div className="flex flex-col h-full w-full items-center justify-center">
+    <Section className="h-[calc(100dvh-3.5rem)] w-full" id="Home">
+      <div className="flex h-full w-full flex-col items-center justify-center">
         <TextType
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xlfont-bold text-center"
-          text={[
-            "hello world!",
-            "Turning ideas into code.",
-            "Welcome to my portfolio.",
-          ]}
+          className="lg:text-6xlfont-bold text-center text-3xl sm:text-4xl md:text-5xl"
+          text={[t("enuciete1"), t("enuciete2"), t("enuciete3")]}
           typingSpeed={75}
           pauseDuration={1500}
           showCursor
@@ -26,17 +24,19 @@ export default function HomePage() {
         <GradientText
           colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
           animationSpeed={3}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-center"
+          className="text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
         >
-          <p>Hi, I&apos;m Kayc Farias</p>
+          <p>{t("title")}</p>
         </GradientText>
         <code className="text-md sm:text-lg md:text-2xl lg:text-3xl">
-          {"</Full Stack Developer>"}
+          {"<"}
+          {t("subtitle")}
+          {" />"}
         </code>
         <Button asChild variant={"outline"} className="mt-4">
           <Link href="/Kayc_Farias_Curriculo.pdf" download={true}>
             {" "}
-            <FileDown /> Download my CV
+            <FileDown /> {t("download")}
           </Link>
         </Button>
       </div>
@@ -48,7 +48,7 @@ export default function HomePage() {
           })
         }
         size={64}
-        className="mx-auto animate-bounce absolute bottom-14"
+        className="absolute bottom-14 mx-auto animate-bounce"
       />
     </Section>
   );

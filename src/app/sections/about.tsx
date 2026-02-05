@@ -1,14 +1,17 @@
-import CircularText from "@/components/CircularText";
-import TextType from "@/components/TextType";
-import Section from "@/components/ui/Section";
+import CircularText from "@/components/circular-text";
+import TextType from "@/components/text-type";
+import Section from "@/components/ui/section";
 import Image from "next/image";
+import { useTranslations } from "use-intl";
 
 export default function AboutPage() {
+  const t = useTranslations("AboutSection");
+
   return (
     <Section id="About">
       <TextType
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center"
-        text={["About Me"]}
+        className="text-center text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl"
+        text={[t("title")]}
         typingSpeed={75}
         pauseDuration={1500}
         showCursor
@@ -17,7 +20,7 @@ export default function AboutPage() {
         loop={false}
       />
       <div className="relative flex flex-col items-center justify-center">
-        <div className="relative flex items-center justify-center border rounded-full backdrop-blur-xl overflow-hidden">
+        <div className="relative flex items-center justify-center overflow-hidden rounded-full border backdrop-blur-xl">
           <div className="absolute flex flex-col items-center justify-center">
             <Image
               src="/kaycfarias.jpg"
@@ -25,7 +28,7 @@ export default function AboutPage() {
               width={235}
               height={235}
               priority
-              className="rounded-full border inset-0"
+              className="inset-0 rounded-full border"
             />
           </div>
           <CircularText
@@ -37,9 +40,9 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="max-w-3xl text-center space-y-8 px-4">
+      <div className="max-w-3xl space-y-8 px-4 text-center">
         <div className="space-y-4">
-          <div className="inline-block bg-card border rounded-lg p-4 text-left font-mono text-sm text-muted-foreground">
+          <div className="bg-card text-muted-foreground inline-block rounded-lg border p-4 text-left font-mono text-sm">
             <span className="text-pink-500">class</span>{" "}
             <span className="text-orange-400">KaycFarias</span> {"{"}
             <div className="pl-4">
@@ -65,12 +68,8 @@ export default function AboutPage() {
             <div>{"}"}</div>
           </div>
 
-          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed py-5">
-            I&apos;m a 21-year-old Software Engineering student since early 2024. My
-            passion for technology and programming started early, at age 12,
-            when I took a robotics course. Since then, I&apos;ve been dedicated to
-            learning and improving my skills in the field, exploring various
-            aspects of software development.
+          <p className="text-muted-foreground py-5 text-lg leading-relaxed sm:text-xl">
+            {t("description")}
           </p>
         </div>
       </div>

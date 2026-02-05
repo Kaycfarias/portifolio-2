@@ -1,0 +1,58 @@
+{
+  "Navbar": {
+    "Home": "Início",
+    "About": "Sobre",
+    "Skills": "Skills",
+    "Projects": "Projetos",
+    "Contact": "Contato"
+  },
+  "HomeSection": {
+    "title": "Kayc Farias",
+    "subtitle": "Desenvolvedor Full-Stack",
+    "enuciete1": "hello world!",
+    "enuciete2": "Ideias em código.",
+    "enuciete3": "Seja bem-vindo!",
+    "download": "Baixe meu Currículo"
+  },
+  "AboutSection": {
+    "title": "Sobre Mim",
+    "description": "Tenho 21 anos e sou estudante de Engenharia de Software desde o início de 2024. Minha paixão por tecnologia e programação começou cedo, aos 12 anos, quando fiz um curso de robótica. Desde então, venho me dedicando a aprender e aprimorar minhas habilidades na área, explorando diversos aspectos do desenvolvimento de software."
+  },
+  "SkillsSection": {
+    "title": "Minhas Skills"
+  },
+  "ProjectsSection": {
+    "title": "Meus Projetos",
+    "bewear-ecommerce": {
+      "description": "Uma plataforma moderna e completa de e-commerce para produtos de moda, desenvolvida com as mais recentes tecnologias web."
+    },
+    "http-client": {
+      "description": "Um poderoso cliente HTTP para fazer requisições de API, escrito em Rust para maximizar desempenho e confiabilidade."
+    },
+    "portfolio-website": {
+      "description": "Meu site de portfólio pessoal apresentando meus projetos, habilidades e experiência."
+    },
+    "carousel-end": {
+      "enunciate": "Mais projetos em breve!",
+      "button": "Ver no GitHub"
+    }
+  },
+  "ContactSection": {
+    "title": "Entre em Contato",
+    "subtitle": "Vamos trabalhar juntos!",
+    "Card": {
+      "title": "Fale Comigo",
+      "description": "Sinta-se à vontade para entrar em contato para colaborações, oportunidades ou apenas para um oi amigável!"
+    },
+    "Form": {
+      "name": { "label": "Nome", "placeholder": "Digite seu nome" },
+      "email": { "label": "E-mail", "placeholder": "seu@email.com" },
+      "subject": { "label": "Assunto", "placeholder": "Sobre o que é?" },
+      "message": {
+        "label": "Mensagem",
+        "placeholder": "Digite sua mensagem..."
+      },
+      "button": "Enviar Mensagem"
+    }
+  }
+}
