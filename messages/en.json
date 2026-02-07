@@ -6,12 +6,15 @@
     "Projects": "Projects",
     "Contact": "Contact"
   },
+  "LanguageSwitcher": {
+    "Language": "Language"
+  },
   "HomeSection": {
     "title": "Hi, I'm Kayc Farias",
     "subtitle": "Full-Stack Developer",
-    "enuciete1": "hello world!",
-    "enuciete2": "Turning ideas into code.",
-    "enuciete3": "Welcome to my portfolio.",
+    "enunciate1": "hello world!",
+    "enunciate2": "Turning ideas into code.",
+    "enunciate3": "Welcome to my portfolio.",
     "download": "Download my CV"
   },
   "AboutSection": {
@@ -45,11 +48,14 @@
       "description": "Feel free to reach out for collaborations, opportunities, or just a friendly hello!"
     },
     "Form": {
-      "name": { "label": "Name", "placeholder": "Enter your name" },
+      "name": { "label": "Name", "placeholder": "Your name" },
       "email": { "label": "Email", "placeholder": "your@email.com" },
-      "subject": { "label": "Subject", "placeholder": "What is this about?" },
-      "message": { "label": "Message", "placeholder": "Enter message..." },
+      "subject": { "label": "Subject", "placeholder": "What's this about?" },
+      "message": { "label": "Message", "placeholder": "Write your message..." },
       "button": "Send Message"
     }
+  },
+  "footer": {
+    "text": "Kayc Farias. All rights reserved."
   }
 }

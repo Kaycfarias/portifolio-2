@@ -6,12 +6,15 @@
     "Projects": "Projetos",
     "Contact": "Contato"
   },
+  "LanguageSwitcher": {
+    "Language": "Idioma"
+  },
   "HomeSection": {
     "title": "Kayc Farias",
     "subtitle": "Desenvolvedor Full-Stack",
-    "enuciete1": "hello world!",
-    "enuciete2": "Ideias em código.",
-    "enuciete3": "Seja bem-vindo!",
+    "enunciate1": "hello world!",
+    "enunciate2": "Ideias em código.",
+    "enunciate3": "Seja bem-vindo!",
     "download": "Baixe meu Currículo"
   },
   "AboutSection": {
@@ -47,12 +50,15 @@
     "Form": {
       "name": { "label": "Nome", "placeholder": "Digite seu nome" },
       "email": { "label": "E-mail", "placeholder": "seu@email.com" },
-      "subject": { "label": "Assunto", "placeholder": "Sobre o que é?" },
+      "subject": { "label": "Assunto", "placeholder": "Qual o assunto" },
       "message": {
         "label": "Mensagem",
         "placeholder": "Digite sua mensagem..."
       },
       "button": "Enviar Mensagem"
     }
+  },
+  "footer": {
+    "text": "Kayc Farias. All rights reserved."
   }
 }

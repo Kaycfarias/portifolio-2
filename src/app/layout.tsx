@@ -3,10 +3,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import NavProvider from "@/app/context/NavContext";
+import Particles from "@/components/particles-background";
 import { ThemeProvider } from "@/components/theme-provider";
 
-import Particles from "@/components/particles-background";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { useLocale } from "next-intl";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +20,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  /* SEO */
   generator: "Next.js",
   applicationName: "Kayc Farias Portfolio site",
   keywords: [
@@ -35,17 +35,12 @@ export const metadata: Metadata = {
   description: "Kayc Farias Portfolio site",
 };
 
-interface LayoutProps {
+interface RootLayoutProps {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: Readonly<LayoutProps>) {
-  const { locale } = await params;
-
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
+  const locale = useLocale();
   return (
     <html lang={locale} suppressHydrationWarning>
       <body

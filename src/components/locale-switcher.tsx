@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { ChevronDownIcon } from "lucide-react";
 import { Button } from "./ui/button";
@@ -15,17 +15,19 @@ import {
 } from "./ui/dropdown-menu";
 
 type LocaleOption = {
-  readonly code: "en" | "pt";
+  readonly code: "en" | "pt-BR";
   readonly flag: string;
   readonly label: string;
 };
 
 const LOCALE_OPTIONS: readonly LocaleOption[] = [
   { code: "en", flag: "🇺🇸", label: "English" },
-  { code: "pt", flag: "🇧🇷", label: "Português" },
+  { code: "pt-BR", flag: "🇧🇷", label: "Português" },
 ] as const;
 
 const LocaleSwitcher = () => {
+  const t = useTranslations("LanguageSwitcher");
+
   const router = useRouter();
   const pathname = usePathname();
   const currentLocale = useLocale();
@@ -47,7 +49,7 @@ const LocaleSwitcher = () => {
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           <DropdownMenuLabel className="text-muted-foreground">
-            Language
+            {t("Language")}
           </DropdownMenuLabel>
           {LOCALE_OPTIONS.map(({ code, flag, label }) => (
             <DropdownMenuItem
