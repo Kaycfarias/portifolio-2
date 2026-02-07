@@ -10,7 +10,7 @@ export const routing = defineRouting({
   defaultLocale: "en",
 
   // Always show locale prefix in URLs (/en/, /pt/)
-  localePrefix: "never",
+  localePrefix: "always",
 
   // Detect user's locale from browser settings
   localeDetection: true,

@@ -4,7 +4,7 @@ import Section from "@/components/ui/section";
 import Image from "next/image";
 import { useTranslations } from "use-intl";
 
-export default function AboutPage() {
+export default function About() {
   const t = useTranslations("AboutSection");
 
   return (

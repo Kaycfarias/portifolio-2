@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
 import { Moon, Sun } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
 import { cn } from "@/lib/utils";
@@ -9,6 +9,51 @@ import { cn } from "@/lib/utils";
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number;
 }
+
+const getCircleCenter = (element: HTMLElement) => {
+  const { top, left, width, height } = element.getBoundingClientRect();
+  return {
+    x: left + width / 2,
+    y: top + height / 2,
+  };
+};
+
+const getMaxRadius = (x: number, y: number) => {
+  const maxX = Math.max(x, window.innerWidth - x);
+  const maxY = Math.max(y, window.innerHeight - y);
+  return Math.hypot(maxX, maxY);
+};
+
+const animateThemeTransition = (element: HTMLElement, duration: number) => {
+  const { x, y } = getCircleCenter(element);
+  const radius = getMaxRadius(x, y);
+
+  document.documentElement.animate(
+    {
+      clipPath: [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${radius}px at ${x}px ${y}px)`,
+      ],
+    },
+    {
+      duration,
+      easing: "ease-in-out",
+      pseudoElement: "::view-transition-new(root)",
+    },
+  );
+};
+
+const updateThemeState = (isDark: boolean) => {
+  const root = document.documentElement;
+  if (isDark) {
+    root.classList.replace("light", "dark");
+    root.style.colorScheme = root.style.colorScheme.replace("light", "dark");
+  } else {
+    root.classList.replace("dark", "light");
+    root.style.colorScheme = root.style.colorScheme.replace("dark", "light");
+  }
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+};
 
 export const AnimatedThemeToggler = ({
   className,
@@ -19,13 +64,13 @@ export const AnimatedThemeToggler = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const updateTheme = () => {
+    const syncThemeFromDOM = () => {
       setIsDark(document.documentElement.classList.contains("dark"));
     };
 
-    updateTheme();
+    syncThemeFromDOM();
 
-    const observer = new MutationObserver(updateTheme);
+    const observer = new MutationObserver(syncThemeFromDOM);
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
@@ -41,33 +86,11 @@ export const AnimatedThemeToggler = ({
       flushSync(() => {
         const newTheme = !isDark;
         setIsDark(newTheme);
-        document.documentElement.classList.toggle("dark");
-        localStorage.setItem("theme", newTheme ? "dark" : "light");
+        updateThemeState(newTheme);
       });
     }).ready;
 
-    const { top, left, width, height } =
-      buttonRef.current.getBoundingClientRect();
-    const x = left + width / 2;
-    const y = top + height / 2;
-    const maxRadius = Math.hypot(
-      Math.max(left, window.innerWidth - left),
-      Math.max(top, window.innerHeight - top),
-    );
-
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${maxRadius}px at ${x}px ${y}px)`,
-        ],
-      },
-      {
-        duration,
-        easing: "ease-in-out",
-        pseudoElement: "::view-transition-new(root)",
-      },
-    );
+    animateThemeTransition(buttonRef.current, duration);
   }, [isDark, duration]);
 
   return (

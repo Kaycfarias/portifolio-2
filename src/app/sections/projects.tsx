@@ -14,6 +14,7 @@ import {
 import CarouselProject from "@/components/ui/carousel-project";
 
 import Section from "@/components/ui/section";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 
@@ -21,25 +22,35 @@ import { useTranslations } from "use-intl";
 
 import { projects } from "@/portfolio-config";
 
-export default function ProjectsPage() {
-  const t = useTranslations("ProjectsSection");
-
-  const [api, setApi] = React.useState<CarouselApi>();
+const useCarouselState = (api: CarouselApi | undefined) => {
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
-    if (!api) {
-      return;
-    }
+    if (!api) return;
 
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on("select", () => {
+    const handleSelect = () => {
       setCurrent(api.selectedScrollSnap() + 1);
-    });
+    };
+
+    api.on("select", handleSelect);
+
+    return () => {
+      api.off("select", handleSelect);
+    };
   }, [api]);
+
+  return { current, count };
+};
+
+export default function Projects() {
+  const t = useTranslations("ProjectsSection");
+
+  const [api, setApi] = React.useState<CarouselApi>();
+  const { current, count } = useCarouselState(api);
 
   return (
     <Section id="Projects">
@@ -80,16 +91,17 @@ export default function ProjectsPage() {
             </CarouselContent>
             <div className="text-muted-foreground flex items-center justify-between space-x-1 text-center text-sm">
               <ButtonGroup>
-                {Array.from({ length: count }).map((_, index) => (
+                {Array.from({ length: count }, (_, index) => (
                   <Button
                     variant={"outline"}
                     onClick={() => api?.scrollTo(index)}
                     key={index}
-                    className={`size-8 text-center ${
+                    className={cn(
+                      "size-8 text-center",
                       current === index + 1
                         ? "text-primary"
-                        : "text-muted-foreground"
-                    }`}
+                        : "text-muted-foreground",
+                    )}
                   >
                     {index + 1}
                   </Button>

@@ -2,54 +2,81 @@ import GradientText from "@/components/gradient-text";
 import TextType from "@/components/text-type";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/ui/section";
-import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Send,
+  type LucideIcon,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
-const inputClass =
+const INPUT_CLASS =
   "w-full px-4 py-2 rounded-lg border border-border/50 bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
 
-const socialLinks = [
+interface SocialLink {
+  href: string;
+  icon: LucideIcon;
+}
+
+interface ContactInfoItem {
+  icon: LucideIcon;
+  text: string;
+}
+
+const SOCIAL_LINKS: SocialLink[] = [
   { href: "https://github.com/Kaycfarias", icon: Github },
   { href: "https://linkedin.com/in/kayc-farias-b32840283/", icon: Linkedin },
 ];
 
-const contactInfo = [
+const CONTACT_INFO: ContactInfoItem[] = [
   { icon: Mail, text: "kaycg123@gmail.com" },
   { icon: MapPin, text: "Brazil" },
 ];
 
-export default function ContactPage() {
-  const t = useTranslations("ContactSection");
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
-    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-    const subject = (form.elements.namedItem("subject") as HTMLInputElement)
-      .value;
-    const message = (form.elements.namedItem("message") as HTMLTextAreaElement)
-      .value;
-
-    const body = `
+const buildMailtoLink = (data: FormData, recipientEmail: string): string => {
+  const body = `
 Nova mensagem do portfólio
 --------------------------
     
-Nome: ${name}
-Email: ${email}
+Nome: ${data.name}
+Email: ${data.email}
 
 Mensagem:
-${message}
+${data.message}
 
 --------------------------
 Enviado via kaycfarias.dev
     `.trim();
 
-    const mailtoLink = `mailto:${
-      contactInfo[0].text
-    }?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${recipientEmail}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
+};
 
+export default function Contact() {
+  const t = useTranslations("ContactSection");
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+
+    const formData: FormData = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement)
+        .value,
+    };
+
+    const mailtoLink = buildMailtoLink(formData, CONTACT_INFO[0].text);
     window.location.href = mailtoLink;
   };
   return (
@@ -83,7 +110,7 @@ Enviado via kaycfarias.dev
             </div>
 
             <div className="space-y-4">
-              {contactInfo.map(({ icon: Icon, text }) => (
+              {CONTACT_INFO.map(({ icon: Icon, text }) => (
                 <div
                   key={text}
                   className="text-muted-foreground hover:text-foreground flex items-center gap-3 transition-colors"
@@ -95,7 +122,7 @@ Enviado via kaycfarias.dev
             </div>
 
             <div className="mt-4 flex gap-4">
-              {socialLinks.map(({ href, icon: Icon }) => (
+              {SOCIAL_LINKS.map(({ href, icon: Icon }) => (
                 <Link
                   key={href}
                   href={href}
@@ -121,7 +148,7 @@ Enviado via kaycfarias.dev
                 type="text"
                 name="name"
                 placeholder={t("Form.name.placeholder")}
-                className={inputClass}
+                className={INPUT_CLASS}
                 required
               />
             </label>
@@ -134,7 +161,7 @@ Enviado via kaycfarias.dev
                 type="email"
                 name="email"
                 placeholder={t("Form.email.placeholder")}
-                className={inputClass}
+                className={INPUT_CLASS}
                 required
               />
             </label>
@@ -147,7 +174,7 @@ Enviado via kaycfarias.dev
                 type="text"
                 name="subject"
                 placeholder={t("Form.subject.placeholder")}
-                className={inputClass}
+                className={INPUT_CLASS}
                 required
               />
             </label>
@@ -160,7 +187,7 @@ Enviado via kaycfarias.dev
                 name="message"
                 placeholder={t("Form.message.placeholder")}
                 rows={4}
-                className={`${inputClass} resize-none`}
+                className={`${INPUT_CLASS} resize-none`}
                 required
               />
             </label>
